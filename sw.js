@@ -3,7 +3,7 @@
  * Provides offline caching and instant loading
  */
 
-const CACHE_NAME = 'minimalist-todo-v1';
+const CACHE_NAME = 'minimalist-todo-v2';
 
 const ASSETS_TO_CACHE = [
   './',
@@ -47,8 +47,9 @@ self.addEventListener('activate', (event) => {
 
 // 3. Fetch Event: Cache-first with stale-while-revalidate & offline fallback
 self.addEventListener('fetch', (event) => {
-  // Only intercept GET requests
+  // Only intercept standard HTTP/HTTPS GET requests
   if (event.request.method !== 'GET') return;
+  if (!event.request.url.startsWith('http')) return;
 
   event.respondWith(
     caches.match(event.request, { ignoreSearch: true }).then((cachedResponse) => {
@@ -74,4 +75,3 @@ self.addEventListener('fetch', (event) => {
     })
   );
 });
-

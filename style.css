@@ -5,18 +5,20 @@
 :root,
 [data-theme="light"] {
   /* Surface & Background Colors */
-  --color-bg: #f3f5f9;
+  --color-bg: #f6f8fb;
   --color-bg-dot: #cbd5e1;
   --color-card-bg: #ffffff;
   --color-card-border: #e2e8f0;
   --color-header-bg: #ffffff;
   --color-footer-bg: #f8fafc;
+  --color-calendar-bg: #f8fafc;
+  --color-calendar-cell-hover: #e2e8f0;
 
   /* Brand & Accent Colors */
   --color-primary: #4f46e5;
   --color-primary-hover: #4338ca;
   --color-primary-light: #eef2ff;
-  --color-primary-glow: rgba(79, 70, 229, 0.18);
+  --color-primary-glow: rgba(79, 70, 229, 0.16);
   
   /* Text Colors */
   --color-text-main: #0f172a;
@@ -49,12 +51,27 @@
   --color-checkbox-bg: #ffffff;
   --color-checkbox-hover-bg: #f5f7ff;
 
-  /* Theme Toggle Button */
-  --color-toggle-bg: #f1f5f9;
-  --color-toggle-border: #e2e8f0;
-  --color-toggle-text: #64748b;
-  --color-toggle-hover-bg: #e2e8f0;
-  --color-toggle-hover-text: #0f172a;
+  /* Header & Action Buttons */
+  --color-action-bg: #f1f5f9;
+  --color-action-border: #e2e8f0;
+  --color-action-text: #64748b;
+  --color-action-hover-bg: #e2e8f0;
+  --color-action-hover-text: #0f172a;
+
+  /* Priority Colors */
+  --priority-low-color: #2563eb;
+  --priority-low-bg: #eff6ff;
+  --priority-low-border: #dbeafe;
+  --priority-med-color: #d97706;
+  --priority-med-bg: #fffbeb;
+  --priority-med-border: #fde68a;
+  --priority-high-color: #e11d48;
+  --priority-high-bg: #fff1f2;
+  --priority-high-border: #fecdd3;
+
+  /* Overdue Color */
+  --color-overdue: #e11d48;
+  --color-overdue-bg: #ffe4e6;
 
   /* Functional Status Colors */
   --color-success: #10b981;
@@ -62,16 +79,18 @@
   --color-danger-light: #fef2f2;
 
   /* Shadows */
-  --shadow-card: 0 16px 32px -4px rgba(15, 23, 42, 0.08), 0 4px 8px -2px rgba(15, 23, 42, 0.04);
+  --shadow-card: 0 12px 30px -4px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.03);
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
 
   /* Shared Radii & Fonts */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 18px;
   --radius-full: 9999px;
-  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  --transition: all 0.2s ease-in-out;
+  --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 [data-theme="dark"] {
@@ -81,13 +100,15 @@
   --color-card-bg: #121826;
   --color-card-border: #1e293b;
   --color-header-bg: #121826;
-  --color-footer-bg: #0f1422;
+  --color-footer-bg: #0d131f;
+  --color-calendar-bg: #0d131f;
+  --color-calendar-cell-hover: #1e293b;
 
   /* Brand & Accent Colors */
   --color-primary: #6366f1;
   --color-primary-hover: #818cf8;
   --color-primary-light: rgba(99, 102, 241, 0.16);
-  --color-primary-glow: rgba(99, 102, 241, 0.35);
+  --color-primary-glow: rgba(99, 102, 241, 0.32);
 
   /* Text Colors */
   --color-text-main: #f8fafc;
@@ -120,12 +141,27 @@
   --color-checkbox-bg: #0b0f19;
   --color-checkbox-hover-bg: rgba(99, 102, 241, 0.16);
 
-  /* Theme Toggle Button */
-  --color-toggle-bg: #1a2336;
-  --color-toggle-border: #26334d;
-  --color-toggle-text: #fbbf24; /* Warm sun amber */
-  --color-toggle-hover-bg: #222d44;
-  --color-toggle-hover-text: #fef08a;
+  /* Header & Action Buttons */
+  --color-action-bg: #1a2336;
+  --color-action-border: #26334d;
+  --color-action-text: #94a3b8;
+  --color-action-hover-bg: #222d44;
+  --color-action-hover-text: #f8fafc;
+
+  /* Priority Colors */
+  --priority-low-color: #60a5fa;
+  --priority-low-bg: rgba(37, 99, 235, 0.15);
+  --priority-low-border: rgba(37, 99, 235, 0.3);
+  --priority-med-color: #fbbf24;
+  --priority-med-bg: rgba(245, 158, 11, 0.15);
+  --priority-med-border: rgba(245, 158, 11, 0.3);
+  --priority-high-color: #fb7185;
+  --priority-high-bg: rgba(244, 63, 94, 0.15);
+  --priority-high-border: rgba(244, 63, 94, 0.3);
+
+  /* Overdue Color */
+  --color-overdue: #fb7185;
+  --color-overdue-bg: rgba(225, 29, 72, 0.2);
 
   /* Functional Status Colors */
   --color-success: #10b981;
@@ -133,17 +169,27 @@
   --color-danger-light: rgba(239, 68, 68, 0.16);
 
   /* Shadows */
-  --shadow-card: 0 24px 48px -12px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --shadow-card: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05);
   --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 25px -5px rgba(0, 0, 0, 0.6);
 }
 
 /* ==========================================================================
-   Global Reset & Base Setup (iOS Safe Areas & PWA)
+   Global Reset & Base Setup
    ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 body {
@@ -157,10 +203,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: max(2.5rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(2.5rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+  padding: 2.5rem 1rem;
   line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   overscroll-behavior-y: none;
   -webkit-tap-highlight-color: transparent;
 }
@@ -182,7 +226,8 @@ body,
 .empty-icon,
 .app-footer,
 .btn-text,
-.theme-toggle-btn,
+.header-icon-btn,
+.calendar-panel,
 .progress-bar-bg {
   transition: background-color 0.3s ease,
               border-color 0.3s ease,
@@ -191,7 +236,7 @@ body,
 }
 
 /* ==========================================================================
-   App Container
+   App Container (Desktop Card)
    ========================================================================== */
 .app-container {
   width: 100%;
@@ -203,15 +248,18 @@ body,
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 /* ==========================================================================
-   Header Section & Theme Toggle
+   Header Section & Navigation
    ========================================================================== */
 .app-header {
   padding: 1.75rem 2rem 1.25rem;
   background: var(--color-header-bg);
   border-bottom: 1px solid var(--color-border);
+  position: relative;
+  z-index: 20;
 }
 
 .header-content {
@@ -219,68 +267,137 @@ body,
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .header-title-group {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.header-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
 }
 
 .app-title {
-  font-size: 1.6rem;
+  font-size: 1.55rem;
   font-weight: 700;
   color: var(--color-text-main);
   letter-spacing: -0.025em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-today-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+  border: 1px solid transparent;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.btn-today-pill:hover {
+  background: var(--color-primary);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.btn-today-pill:active {
+  transform: scale(0.95);
+}
+
+.btn-today-pill[hidden] {
+  display: none !important;
 }
 
 .current-date {
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   font-weight: 500;
   color: var(--color-text-muted);
 }
 
-/* Theme Toggle Button */
-.theme-toggle-btn {
+/* Action Buttons Header */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.header-icon-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
-  min-width: 42px;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
   border-radius: var(--radius-md);
-  background: var(--color-toggle-bg);
-  border: 1px solid var(--color-toggle-border);
-  color: var(--color-toggle-text);
+  background: var(--color-action-bg);
+  border: 1px solid var(--color-action-border);
+  color: var(--color-action-text);
   cursor: pointer;
   transition: var(--transition);
   box-shadow: var(--shadow-sm);
 }
 
-.theme-toggle-btn:hover {
-  background: var(--color-toggle-hover-bg);
-  color: var(--color-toggle-hover-text);
+.header-icon-btn:hover {
+  background: var(--color-action-hover-bg);
+  color: var(--color-action-hover-text);
   transform: translateY(-1px);
 }
 
-.theme-toggle-btn:active {
+.header-icon-btn:active {
   transform: scale(0.95);
 }
 
-/* Switch SVG Icon Visibility Based On Current Theme */
-.sun-icon {
+.header-icon-btn.active {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.calendar-badge-dot {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+
+.calendar-badge-dot[hidden] {
   display: none;
 }
 
+/* Sun / Moon Switch */
+.sun-icon {
+  display: none;
+}
 .moon-icon {
   display: block;
 }
-
 [data-theme="dark"] .sun-icon {
   display: block;
+  color: #fbbf24;
 }
-
 [data-theme="dark"] .moon-icon {
   display: none;
 }
@@ -290,6 +407,7 @@ body,
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  margin-top: 0.25rem;
 }
 
 .progress-bar-bg {
@@ -305,7 +423,7 @@ body,
   width: 0%;
   background: linear-gradient(90deg, var(--color-primary), #818cf8);
   border-radius: var(--radius-full);
-  transition: width 0.3s ease;
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .progress-text {
@@ -318,14 +436,206 @@ body,
 }
 
 /* ==========================================================================
-   Task Input Form
+   Calendar Panel (Expandable)
+   ========================================================================== */
+.calendar-panel {
+  margin-top: 1rem;
+  padding: 1.15rem;
+  background: var(--color-calendar-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  animation: calendarSlideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.calendar-panel[hidden] {
+  display: none !important;
+}
+
+@keyframes calendarSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+
+.calendar-month-year {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+.calendar-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.calendar-nav-btn:hover {
+  background: var(--color-card-bg);
+  color: var(--color-text-main);
+}
+
+.calendar-nav-btn:active {
+  transform: scale(0.92);
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-light);
+  margin-bottom: 0.4rem;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.calendar-day-cell {
+  position: relative;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--color-text-main);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  transition: var(--transition);
+  padding: 0;
+  min-height: 36px;
+}
+
+.calendar-day-cell:hover:not(:disabled) {
+  background: var(--color-calendar-cell-hover);
+}
+
+.calendar-day-cell:active:not(:disabled) {
+  transform: scale(0.92);
+}
+
+/* Outside current month */
+.calendar-day-cell.is-outside {
+  color: var(--color-text-light);
+  opacity: 0.45;
+}
+
+/* Today date marker */
+.calendar-day-cell.is-today {
+  border-color: var(--color-primary);
+  font-weight: 700;
+}
+
+.calendar-day-cell.is-today::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+
+/* Selected date cell */
+.calendar-day-cell.is-selected {
+  background: var(--color-primary) !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  box-shadow: 0 2px 6px var(--color-primary-glow);
+}
+
+.calendar-day-cell.is-selected::before {
+  background: #ffffff;
+}
+
+/* Task indicator dot */
+.calendar-dot {
+  position: absolute;
+  bottom: 3px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+
+.calendar-day-cell.is-selected .calendar-dot {
+  background: #ffffff;
+}
+
+.calendar-dot.dot-completed {
+  background: var(--color-success);
+}
+
+.calendar-dot.dot-overdue {
+  background: var(--color-overdue);
+}
+
+.calendar-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.85rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.calendar-today-btn {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.calendar-today-btn:hover {
+  background: var(--color-primary-light);
+  color: var(--color-primary-hover);
+}
+
+.calendar-close-btn {
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   Task Input Form & Priority Selector
    ========================================================================== */
 .task-form {
-  padding: 1.5rem 2rem 1rem;
+  padding: 1.25rem 2rem 0.85rem;
 }
 
 .input-group {
   display: flex;
+  align-items: center;
   gap: 0.5rem;
   background: transparent;
 }
@@ -341,6 +651,7 @@ body,
   border-radius: var(--radius-md);
   outline: none;
   transition: var(--transition);
+  min-height: 44px;
 }
 
 .task-input::placeholder {
@@ -351,6 +662,51 @@ body,
   background-color: var(--color-input-bg-focus);
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px var(--color-primary-glow);
+}
+
+/* Priority Cycle Selector Button */
+.priority-selector-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.55rem 0.85rem;
+  min-height: 44px;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-input-bg);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: var(--transition);
+  user-select: none;
+}
+
+.priority-selector-btn:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.priority-selector-btn:active {
+  transform: scale(0.96);
+}
+
+.priority-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.priority-selector-btn.priority-low .priority-dot {
+  background-color: var(--priority-low-color);
+}
+.priority-selector-btn.priority-med .priority-dot {
+  background-color: var(--priority-med-color);
+}
+.priority-selector-btn.priority-high .priority-dot {
+  background-color: var(--priority-high-color);
 }
 
 .btn {
@@ -365,6 +721,7 @@ body,
   border: none;
   cursor: pointer;
   transition: var(--transition);
+  min-height: 44px;
 }
 
 .btn-primary {
@@ -376,10 +733,11 @@ body,
 .btn-primary:hover {
   background-color: var(--color-primary-hover);
   box-shadow: 0 4px 10px var(--color-primary-glow);
+  transform: translateY(-1px);
 }
 
 .btn-primary:active {
-  transform: scale(0.98);
+  transform: scale(0.96);
 }
 
 /* ==========================================================================
@@ -412,6 +770,7 @@ body,
   color: var(--color-text-muted);
   cursor: pointer;
   transition: var(--transition);
+  min-height: 38px;
 }
 
 .filter-tab:hover {
@@ -436,8 +795,8 @@ body,
 }
 
 .filter-tab.active .badge {
-  background: var(--color-badge-active-badge-bg);
-  color: var(--color-badge-active-badge-text);
+  background: var(--color-badge-active-bg);
+  color: var(--color-badge-active-text);
 }
 
 /* ==========================================================================
@@ -461,8 +820,9 @@ body,
   gap: 0.875rem;
   padding: 0.875rem 2rem;
   border-bottom: 1px solid var(--color-border-subtle);
-  transition: background-color 0.15s ease, opacity 0.2s ease, transform 0.2s ease;
-  animation: fadeIn 0.2s ease-out;
+  transition: background-color 0.15s ease, opacity 0.25s ease, transform 0.25s ease, max-height 0.25s ease;
+  animation: taskSlideIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  min-height: 52px;
 }
 
 .task-item:hover {
@@ -474,7 +834,7 @@ body,
   visibility: visible;
 }
 
-@keyframes fadeIn {
+@keyframes taskSlideIn {
   from {
     opacity: 0;
     transform: translateY(6px);
@@ -485,10 +845,12 @@ body,
   }
 }
 
+/* Custom Checkbox Button */
 .task-checkbox-btn {
-  width: 22px;
-  height: 22px;
-  min-width: 22px;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
   border-radius: 50%;
   border: 2px solid var(--color-checkbox-border);
   background: var(--color-checkbox-bg);
@@ -498,6 +860,17 @@ body,
   justify-content: center;
   padding: 0;
   transition: var(--transition);
+  position: relative;
+}
+
+/* Expand tap target for mobile */
+.task-checkbox-btn::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  bottom: -10px;
+  left: -10px;
+  right: -10px;
 }
 
 .task-checkbox-btn:hover {
@@ -518,6 +891,56 @@ body,
   transition: var(--transition);
   cursor: pointer;
   user-select: none;
+  line-height: 1.4;
+}
+
+/* Badges on task card */
+.task-meta-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.task-priority-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  user-select: none;
+}
+
+.task-priority-badge.priority-low {
+  color: var(--priority-low-color);
+  background: var(--priority-low-bg);
+  border-color: var(--priority-low-border);
+}
+
+.task-priority-badge.priority-medium {
+  color: var(--priority-med-color);
+  background: var(--priority-med-bg);
+  border-color: var(--priority-med-border);
+}
+
+.task-priority-badge.priority-high {
+  color: var(--priority-high-color);
+  background: var(--priority-high-bg);
+  border-color: var(--priority-high-border);
+}
+
+.task-overdue-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-sm);
+  color: var(--color-overdue);
+  background: var(--color-overdue-bg);
+  user-select: none;
 }
 
 /* Completed Task State */
@@ -528,6 +951,13 @@ body,
 .task-item.completed .task-checkbox-btn {
   background-color: var(--color-success);
   border-color: var(--color-success);
+  animation: checkboxPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes checkboxPop {
+  0% { transform: scale(0.8); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
 }
 
 .task-item.completed .task-checkbox-btn svg {
@@ -539,12 +969,19 @@ body,
   text-decoration: line-through;
 }
 
+.task-item.completed .task-priority-badge,
+.task-item.completed .task-overdue-badge {
+  opacity: 0.4;
+}
+
 /* Delete Button */
 .btn-delete {
   background: transparent;
   border: none;
   color: var(--color-text-light);
-  padding: 0.4rem;
+  padding: 0.45rem;
+  min-width: 36px;
+  min-height: 36px;
   border-radius: var(--radius-sm);
   cursor: pointer;
   display: flex;
@@ -561,14 +998,6 @@ body,
   background-color: var(--color-danger-light);
   opacity: 1;
   visibility: visible;
-}
-
-/* On touch screens, always display delete button */
-@media (hover: none) {
-  .btn-delete {
-    opacity: 0.7;
-    visibility: visible;
-  }
 }
 
 /* ==========================================================================
@@ -631,7 +1060,7 @@ body,
   font-weight: 500;
   color: var(--color-text-muted);
   cursor: pointer;
-  padding: 0.3rem 0.6rem;
+  padding: 0.35rem 0.65rem;
   border-radius: var(--radius-sm);
   transition: var(--transition);
 }
@@ -647,6 +1076,70 @@ body,
 }
 
 /* ==========================================================================
+   Toast Notification (Undo Deletion)
+   ========================================================================== */
+.toast-container {
+  position: fixed;
+  bottom: max(1.5rem, calc(env(safe-area-inset-bottom) + 1rem));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 90%;
+  max-width: 400px;
+}
+
+.toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  background: var(--color-card-bg);
+  color: var(--color-text-main);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+  padding: 0.75rem 1.15rem;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  animation: toastSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes toastSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.btn-undo {
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.btn-undo:hover {
+  background: var(--color-primary-light);
+}
+
+/* ==========================================================================
    Focus & Accessibility
    ========================================================================== */
 :focus-visible {
@@ -655,15 +1148,33 @@ body,
 }
 
 /* ==========================================================================
-   Responsive Adjustments & PWA Standalone Mode
+   Mobile-First Native App Polish (Phone Layout - Max 640px)
    ========================================================================== */
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   body {
-    padding: max(1rem, env(safe-area-inset-top)) max(0.5rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(0.5rem, env(safe-area-inset-left));
+    padding: 0;
+    align-items: stretch;
+    background-image: none;
   }
 
+  .app-container {
+    max-width: 100%;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* iOS Safe Areas & Proportions */
   .app-header {
-    padding: 1.25rem 1.25rem 1rem;
+    padding-top: max(1.25rem, env(safe-area-inset-top));
+    padding-left: max(1.25rem, env(safe-area-inset-left));
+    padding-right: max(1.25rem, env(safe-area-inset-right));
+    padding-bottom: 1rem;
   }
 
   .header-content {
@@ -671,30 +1182,91 @@ body,
   }
 
   .app-title {
-    font-size: 1.4rem;
+    font-size: 1.45rem;
   }
 
   .task-form {
-    padding: 1.25rem 1.25rem 0.75rem;
+    padding: 1rem max(1.25rem, env(safe-area-inset-right)) 0.75rem max(1.25rem, env(safe-area-inset-left));
   }
 
   .filter-bar {
-    padding: 0 1.25rem 0.5rem;
+    padding: 0 max(1.25rem, env(safe-area-inset-right)) 0.65rem max(1.25rem, env(safe-area-inset-left));
+  }
+
+  /* Fluid Scrolling List */
+  .tasks-section {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.5rem 0;
   }
 
   .task-item {
-    padding: 0.875rem 1.25rem;
+    padding: 0.85rem max(1.25rem, env(safe-area-inset-right)) 0.85rem max(1.25rem, env(safe-area-inset-left));
+    min-height: 52px;
+  }
+
+  /* Always keep delete button accessible on touch screens */
+  .btn-delete {
+    opacity: 0.7;
+    visibility: visible;
   }
 
   .app-footer {
-    padding: 0.875rem 1.25rem;
+    padding-top: 0.85rem;
+    padding-bottom: max(0.85rem, env(safe-area-inset-bottom));
+    padding-left: max(1.25rem, env(safe-area-inset-left));
+    padding-right: max(1.25rem, env(safe-area-inset-right));
+  }
+
+  /* Input font-size MUST be at least 16px to prevent iOS Safari auto-zoom */
+  .task-input {
+    font-size: 16px;
+  }
+
+  /* Mobile tap targets */
+  .btn,
+  .btn-primary,
+  .header-icon-btn,
+  .priority-selector-btn {
+    min-height: 44px;
   }
 }
 
-/* When installed and opened as a standalone PWA */
+/* Landscape Phones */
+@media (max-height: 500px) and (orientation: landscape) {
+  .app-header {
+    padding-top: max(0.6rem, env(safe-area-inset-top));
+    padding-bottom: 0.6rem;
+  }
+
+  .calendar-panel {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  .task-form {
+    padding: 0.5rem 1.25rem;
+  }
+}
+
+/* Standalone PWA Mode (iPhone Home Screen) */
 @media all and (display-mode: standalone) {
-  body {
-    padding-top: max(1.5rem, env(safe-area-inset-top));
-    padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+  .app-header {
+    padding-top: max(1.5rem, calc(env(safe-area-inset-top) + 0.25rem));
+  }
+
+  .app-footer {
+    padding-bottom: max(1.1rem, calc(env(safe-area-inset-bottom) + 0.25rem));
+  }
+}
+
+/* Accessibility: Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
