@@ -138,7 +138,7 @@
 }
 
 /* ==========================================================================
-   Global Reset & Base Setup
+   Global Reset & Base Setup (iOS Safe Areas & PWA)
    ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -153,13 +153,16 @@ body {
   background-size: 24px 24px;
   color: var(--color-text-main);
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 2.5rem 1rem;
+  padding: max(2.5rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(2.5rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior-y: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Smooth Theme Transitions */
@@ -433,8 +436,8 @@ body,
 }
 
 .filter-tab.active .badge {
-  background: var(--color-badge-active-bg);
-  color: var(--color-badge-active-text);
+  background: var(--color-badge-active-badge-bg);
+  color: var(--color-badge-active-badge-text);
 }
 
 /* ==========================================================================
@@ -652,11 +655,11 @@ body,
 }
 
 /* ==========================================================================
-   Responsive Adjustments
+   Responsive Adjustments & PWA Standalone Mode
    ========================================================================== */
 @media (max-width: 480px) {
   body {
-    padding: 1rem 0.5rem;
+    padding: max(1rem, env(safe-area-inset-top)) max(0.5rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(0.5rem, env(safe-area-inset-left));
   }
 
   .app-header {
@@ -685,5 +688,13 @@ body,
 
   .app-footer {
     padding: 0.875rem 1.25rem;
+  }
+}
+
+/* When installed and opened as a standalone PWA */
+@media all and (display-mode: standalone) {
+  body {
+    padding-top: max(1.5rem, env(safe-area-inset-top));
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
   }
 }

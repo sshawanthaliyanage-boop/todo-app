@@ -26,6 +26,7 @@
   const progressBar = document.getElementById('progressBar');
   const progressText = document.getElementById('progressText');
   const themeToggleBtn = document.getElementById('themeToggle');
+  const themeColorMeta = document.getElementById('themeColorMeta');
 
   // Filter tab buttons and badge counters
   const filterTabs = document.querySelectorAll('.filter-tab');
@@ -36,9 +37,26 @@
   // --- Initialization ---
   function init() {
     initTheme();
+    registerServiceWorker();
     displayCurrentDate();
     setupEventListeners();
     render();
+  }
+
+  // --- Progressive Web App (PWA) Service Worker ---
+  function registerServiceWorker() {
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker
+          .register('./sw.js')
+          .then((registration) => {
+            console.log('ServiceWorker registered successfully with scope:', registration.scope);
+          })
+          .catch((error) => {
+            console.warn('ServiceWorker registration failed:', error);
+          });
+      });
+    }
   }
 
   // --- Theme Management ---
@@ -70,6 +88,11 @@
       themeToggleBtn.setAttribute('aria-label', label);
       themeToggleBtn.setAttribute('title', label);
     }
+
+    // Synchronize browser and mobile status bar theme-color
+    if (themeColorMeta) {
+      themeColorMeta.setAttribute('content', theme === 'dark' ? '#090d16' : '#ffffff');
+    }
   }
 
   function toggleTheme() {
@@ -95,7 +118,7 @@
         let hasCustomTheme = false;
         try {
           hasCustomTheme = Boolean(localStorage.getItem(THEME_STORAGE_KEY));
-        } catch (_) { }
+        } catch (_) {}
 
         if (!hasCustomTheme) {
           applyTheme(e.matches ? 'dark' : 'light');
@@ -374,4 +397,3 @@
 })();
 
 // Testing Git integration in Antigravity
-
