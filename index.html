@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minimalist To-Do List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="header-content">
+        <h1 class="app-title">Today's Tasks</h1>
+        <p class="current-date" id="currentDate"></p>
+      </div>
+      <div class="progress-container" id="progressContainer">
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progressBar"></div>
+        </div>
+        <span class="progress-text" id="progressText">0% completed</span>
+      </div>
+    </header>
+
+    <form class="task-form" id="taskForm" autocomplete="off">
+      <div class="input-group">
+        <input 
+          type="text" 
+          id="taskInput" 
+          class="task-input" 
+          placeholder="What do you need to do?" 
+          aria-label="New task input"
+          maxlength="150"
+          required
+        >
+        <button type="submit" class="btn btn-primary" id="addBtn" aria-label="Add task">
+          <svg class="icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span>Add</span>
+        </button>
+      </div>
+    </form>
+
+    <div class="filter-bar">
+      <div class="filter-tabs" role="tablist" aria-label="Task filters">
+        <button type="button" class="filter-tab active" data-filter="all" role="tab" aria-selected="true">
+          All <span class="badge" id="countAll">0</span>
+        </button>
+        <button type="button" class="filter-tab" data-filter="active" role="tab" aria-selected="false">
+          Active <span class="badge" id="countActive">0</span>
+        </button>
+        <button type="button" class="filter-tab" data-filter="completed" role="tab" aria-selected="false">
+          Completed <span class="badge" id="countCompleted">0</span>
+        </button>
+      </div>
+    </div>
+
+    <main class="tasks-section">
+      <ul class="task-list" id="taskList" aria-live="polite"></ul>
+      
+      <div class="empty-state" id="emptyState" hidden>
+        <div class="empty-icon">
+          <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 11l3 3L22 4"></path>
+            <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+          </svg>
+        </div>
+        <p class="empty-title" id="emptyTitle">All caught up!</p>
+        <p class="empty-subtitle" id="emptySubtitle">Add a new task above to get started.</p>
+      </div>
+    </main>
+
+    <footer class="app-footer" id="appFooter">
+      <span class="items-left" id="itemsLeft">0 items remaining</span>
+      <button type="button" class="btn-text" id="clearCompletedBtn" aria-label="Clear all completed tasks">
+        Clear completed
+      </button>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

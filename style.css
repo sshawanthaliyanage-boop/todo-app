@@ -1,0 +1,492 @@
+/* ==========================================================================
+   Design Tokens & Reset
+   ========================================================================== */
+:root {
+  --color-bg: #f8fafc;
+  --color-card-bg: #ffffff;
+  --color-primary: #4f46e5;
+  --color-primary-hover: #4338ca;
+  --color-primary-light: #eef2ff;
+  --color-text-main: #0f172a;
+  --color-text-muted: #64748b;
+  --color-text-light: #94a3b8;
+  --color-border: #e2e8f0;
+  --color-border-hover: #cbd5e1;
+  --color-success: #10b981;
+  --color-danger: #ef4444;
+  --color-danger-light: #fef2f2;
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --transition: all 0.2s ease-in-out;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-bg);
+  background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--color-text-main);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2.5rem 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   App Container
+   ========================================================================== */
+.app-container {
+  width: 100%;
+  max-width: 580px;
+  background: var(--color-card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================================================
+   Header Section
+   ========================================================================== */
+.app-header {
+  padding: 1.75rem 2rem 1.25rem;
+  background: #ffffff;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.app-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  letter-spacing: -0.025em;
+}
+
+.current-date {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.progress-bar-bg {
+  flex: 1;
+  height: 6px;
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--color-primary), #818cf8);
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  min-width: 80px;
+  text-align: right;
+}
+
+/* ==========================================================================
+   Task Input Form
+   ========================================================================== */
+.task-form {
+  padding: 1.5rem 2rem 1rem;
+}
+
+.input-group {
+  display: flex;
+  gap: 0.5rem;
+  background: #ffffff;
+}
+
+.task-input {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--color-text-main);
+  background-color: #f8fafc;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: var(--transition);
+}
+
+.task-input::placeholder {
+  color: var(--color-text-light);
+}
+
+.task-input:focus {
+  background-color: #ffffff;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0.8rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   Filter Bar & Tabs
+   ========================================================================== */
+.filter-bar {
+  padding: 0 2rem 0.75rem;
+  display: flex;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 0.35rem;
+  width: 100%;
+}
+
+.filter-tab {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-tab:hover {
+  background: #f1f5f9;
+  color: var(--color-text-main);
+}
+
+.filter-tab.active {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.1rem 0.45rem;
+  border-radius: var(--radius-full);
+  background: #e2e8f0;
+  color: var(--color-text-muted);
+}
+
+.filter-tab.active .badge {
+  background: #c7d2fe;
+  color: var(--color-primary-hover);
+}
+
+/* ==========================================================================
+   Tasks Section & List
+   ========================================================================== */
+.tasks-section {
+  padding: 0.5rem 0;
+  min-height: 220px;
+  position: relative;
+}
+
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.875rem 2rem;
+  border-bottom: 1px solid #f1f5f9;
+  transition: background-color 0.15s ease, opacity 0.2s ease, transform 0.2s ease;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.task-item:hover {
+  background-color: #fafbfd;
+}
+
+.task-item:hover .btn-delete {
+  opacity: 1;
+  visibility: visible;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.task-checkbox-btn {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 50%;
+  border: 2px solid #cbd5e1;
+  background: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: var(--transition);
+}
+
+.task-checkbox-btn:hover {
+  border-color: var(--color-primary);
+  background-color: #f5f7ff;
+}
+
+.task-checkbox-btn svg {
+  display: none;
+  stroke: #ffffff;
+}
+
+.task-text {
+  flex: 1;
+  font-size: 0.95rem;
+  color: var(--color-text-main);
+  word-break: break-word;
+  transition: var(--transition);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Completed Task State */
+.task-item.completed {
+  background-color: #fcfcfd;
+}
+
+.task-item.completed .task-checkbox-btn {
+  background-color: var(--color-success);
+  border-color: var(--color-success);
+}
+
+.task-item.completed .task-checkbox-btn svg {
+  display: block;
+}
+
+.task-item.completed .task-text {
+  color: var(--color-text-light);
+  text-decoration: line-through;
+}
+
+/* Delete Button */
+.btn-delete {
+  background: transparent;
+  border: none;
+  color: var(--color-text-light);
+  padding: 0.4rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+}
+
+.btn-delete:hover,
+.btn-delete:focus-visible {
+  color: var(--color-danger);
+  background-color: var(--color-danger-light);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* On mobile / touch screens, always display delete button */
+@media (hover: none) {
+  .btn-delete {
+    opacity: 0.7;
+    visibility: visible;
+  }
+}
+
+/* ==========================================================================
+   Empty State
+   ========================================================================== */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1.5rem;
+  color: var(--color-text-muted);
+}
+
+.empty-state[hidden] {
+  display: none;
+}
+
+.empty-icon {
+  margin-bottom: 0.85rem;
+  color: #cbd5e1;
+}
+
+.empty-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  margin-bottom: 0.25rem;
+}
+
+.empty-subtitle {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   Footer Section
+   ========================================================================== */
+.app-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: #f8fafc;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.items-left {
+  font-weight: 500;
+}
+
+.btn-text {
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.btn-text:hover {
+  color: var(--color-danger);
+  background-color: var(--color-danger-light);
+}
+
+.btn-text:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Focus & Accessibility
+   ========================================================================== */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
+@media (max-width: 480px) {
+  body {
+    padding: 1rem 0.5rem;
+  }
+
+  .app-header {
+    padding: 1.25rem 1.25rem 1rem;
+  }
+
+  .task-form {
+    padding: 1.25rem 1.25rem 0.75rem;
+  }
+
+  .filter-bar {
+    padding: 0 1.25rem 0.5rem;
+  }
+
+  .task-item {
+    padding: 0.875rem 1.25rem;
+  }
+
+  .app-footer {
+    padding: 0.875rem 1.25rem;
+  }
+}
