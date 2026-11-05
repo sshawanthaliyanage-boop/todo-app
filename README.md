@@ -67,3 +67,5 @@ No installation, build step, or server configuration is required.
 ## 📄 License
 
 This project is open-source and free to use for personal and commercial projects.
+
+Learning Git and GitHub with Google Antigravity.
