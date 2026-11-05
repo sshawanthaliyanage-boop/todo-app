@@ -5,9 +5,8 @@
 (function () {
   'use strict';
 
-  // --- Constants & Storage Keys ---
+  // --- Constants & Storage Key ---
   const STORAGE_KEY = 'minimalist_todo_tasks_v1';
-  const THEME_STORAGE_KEY = 'minimalist_todo_theme';
 
   // --- State ---
   let tasks = loadTasksFromStorage();
@@ -25,7 +24,6 @@
   const currentDateEl = document.getElementById('currentDate');
   const progressBar = document.getElementById('progressBar');
   const progressText = document.getElementById('progressText');
-  const themeToggleBtn = document.getElementById('themeToggle');
 
   // Filter tab buttons and badge counters
   const filterTabs = document.querySelectorAll('.filter-tab');
@@ -35,83 +33,9 @@
 
   // --- Initialization ---
   function init() {
-    initTheme();
     displayCurrentDate();
     setupEventListeners();
     render();
-  }
-
-  // --- Theme Management ---
-  function getPreferredTheme() {
-    // 1. Check if user already picked a preference saved in localStorage
-    try {
-      const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-      if (savedTheme === 'dark' || savedTheme === 'light') {
-        return savedTheme;
-      }
-    } catch (err) {
-      console.warn('Could not read theme from localStorage:', err);
-    }
-
-    // 2. Fallback to operating system's theme preference on first visit
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
-
-    // 3. Default fallback
-    return 'light';
-  }
-
-  function applyTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    if (themeToggleBtn) {
-      const isDark = theme === 'dark';
-      const label = isDark ? 'Switch to light theme' : 'Switch to dark theme';
-      themeToggleBtn.setAttribute('aria-label', label);
-      themeToggleBtn.setAttribute('title', label);
-    }
-  }
-
-  function toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    applyTheme(newTheme);
-
-    try {
-      localStorage.setItem(THEME_STORAGE_KEY, newTheme);
-    } catch (err) {
-      console.error('Failed to save theme to localStorage:', err);
-    }
-  }
-
-  function initTheme() {
-    const activeTheme = getPreferredTheme();
-    applyTheme(activeTheme);
-
-    // React automatically if user changes OS appearance and hasn't manually overridden it
-    if (window.matchMedia) {
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      const handleSystemThemeChange = (e) => {
-        let hasCustomTheme = false;
-        try {
-          hasCustomTheme = Boolean(localStorage.getItem(THEME_STORAGE_KEY));
-        } catch (_) {}
-
-        if (!hasCustomTheme) {
-          applyTheme(e.matches ? 'dark' : 'light');
-        }
-      };
-
-      if (mediaQuery.addEventListener) {
-        mediaQuery.addEventListener('change', handleSystemThemeChange);
-      } else if (mediaQuery.addListener) {
-        mediaQuery.addListener(handleSystemThemeChange);
-      }
-    }
-
-    if (themeToggleBtn) {
-      themeToggleBtn.addEventListener('click', toggleTheme);
-    }
   }
 
   // --- Storage Functions ---
