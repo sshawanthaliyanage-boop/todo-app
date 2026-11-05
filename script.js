@@ -95,7 +95,7 @@
         let hasCustomTheme = false;
         try {
           hasCustomTheme = Boolean(localStorage.getItem(THEME_STORAGE_KEY));
-        } catch (_) {}
+        } catch (_) { }
 
         if (!hasCustomTheme) {
           applyTheme(e.matches ? 'dark' : 'light');
@@ -372,3 +372,6 @@
     init();
   }
 })();
+
+// Testing Git integration in Antigravity
+
